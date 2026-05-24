@@ -10,3 +10,6 @@ env/
 # Mac / Windows system files
 .DS_Store
 Thumbs.db
+# Explicitly include the trained model files
+!model/
+!model/**
