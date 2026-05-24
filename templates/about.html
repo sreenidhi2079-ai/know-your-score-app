@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Know Your Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="title-wrapper">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+        <h1>About Project</h1>
+    </div>
+    <p class="subtitle">System Design & Specifications</p>
+
+    <div class="about-section">
+        <h2>Project Overview</h2>
+        <p>
+            <b>Know Your Score</b> is an advanced AI-driven diagnostic tool designed to predict and analyze smartphone addiction levels. By correlating daily screen time, interaction frequency, and offline hours, the system generates targeted insights based on user behavior.
+        </p>
+    </div>
+
+    <div class="about-section">
+        <h2>Technical Stack</h2>
+        <ul>
+            <li><b>Algorithm:</b> Decision Tree Classifier</li>
+            <li><b>Backend:</b> Flask (Python)</li>
+            <li><b>Frontend:</b> HTML5, CSS3 Custom Properties</li>
+            <li><b>Classification Output:</b> Low / Medium / High</li>
+        </ul>
+    </div>
+
+    <a href="/" class="btn-secondary">🏠 Back to Dashboard</a>
+</div>
+
+</body>
+</html>

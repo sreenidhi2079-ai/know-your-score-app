@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Insights | Know Your Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="title-wrapper">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+        <h1>Analysis Completed</h1>
+    </div>
+    <p class="subtitle">Here is your customized smartphone usage insight</p>
+
+    <div class="result-container">
+        <!-- Determining badge color via JavaScript embedded slightly below or utilizing basic inline templating. -->
+        {% set pred_raw = prediction|lower %}
+        {% if 'low' in pred_raw %}
+            <div class="badge low">🟢 {{ prediction }} Risk</div>
+        {% elif 'medium' in pred_raw %}
+            <div class="badge medium">🟠 {{ prediction }} Risk</div>
+        {% elif 'high' in pred_raw %}
+            <div class="badge high">🔴 {{ prediction }} Risk</div>
+        {% else %}
+            <div class="badge default">{{ prediction }}</div>
+        {% endif %}
+
+        <div class="ai-insight">
+            <div class="ai-insight-label">✨ AI Insight</div>
+            <div class="suggestion-text">
+                {{ suggestion }}
+            </div>
+        </div>
+    </div>
+
+    <a href="/" class="btn-secondary">🔙 Retake Assessment</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+SN.,Name,Age,Gender,Occupation,Avg_screen_time_hours,Avg_sleep_time_hours,Purpose,Phone_before_sleep,Action_after_wakingup,Phone_checks_per_day,Hours_without_phone,score,Addiction_Level
+1,M R Vijaya Sarathi ,50,M,Working Professional,4,8,Calls,Y,Other,30,3,3,Medium
+2,D.Krishna Shashank,19,M,Student,3,8,Social Media,Y,Get Ready for the day,25,24,2,Low
+3,Adithya,15,M,Student,2,8,Social Media,Y,Get Ready for the day,15,30,0,Low
+4,M V S Lavanya ,49,F,Working Professional,5,9,Social Media,Y,Get Ready for the day,25,3,3,Medium
+5,Meghana Giyyar,29,F,Working Professional,3,8,Social Media,Y,Get Ready for the day,25,24,2,Low
+6,Dwaraka,26,M,Working Professional,4,8,Social Media,Y,Check your phone,25,24,2,Low
+7,Akshay Kumar ,26,M,Working Professional,5,6,Other,Y,Check your phone,15,3,2,Low
+8,Sunitha,46,F,Other,3,6,Other,Y,Other,15,3,2,Low
+9,Harshavardhan Kandlakunta,25,M,Working Professional,6,6,Study/Work,Y,Check your phone,30,30,3,Medium
+10,M V S Sreenidhi,20,F,Student,6,6,Social Media,Y,Check your phone,25,24,3,Medium
+11,Syeda khadija moin ,21,F,Student,4,6,Study/Work,Y,Check your phone,25,3,3,Medium
+12,Gopinath Daruri ,56,M,Working Professional,4,8,Calls,N,Get Ready for the day,25,1,4,Medium
+13,Bharadwaj ,55,M,Other,3,6,Social Media,Y,Get Ready for the day,15,3,2,Low
+14,Sai Raghava ,26,M,Working Professional,3,8,Study/Work,Y,Yoga/Exercise,15,30,1,Low
+15,M Lakshmi ,47,F,Other,2,6,Other,N,Yoga/Exercise,15,24,0,Low
+16,Shreekanth Sharma ,54,M,Other,7,8,Other,Y,Yoga/Exercise,25,1,5,High
+17,M Hari Vallabha,18,M,Student,5,8,Social Media,Y,Check your phone,30,24,2,Low
+18,Subedar Bhargavi ,21,F,Student,7,8,Social Media,Y,Get Ready for the day,25,24,3,Medium
+19,Alekhya mamidala ,21,F,Student,5,8,Social Media,Y,Get Ready for the day,25,3,3,Medium
+20,Esha,40,F,Working Professional,3,8,OTT Platforms,Y,Yoga/Exercise,25,3,3,Medium
+21,Sai baba,44,M,Other,3,6,Social Media,Y,Other,25,24,2,Low
+22,radhasalgar,35,F,Other,2,6,Other,Y,Other,50,3,3,Medium
+23,Paltya prakash ,48,M,Working Professional,3,8,Study/Work,Y,Get Ready for the day,15,3,2,Low
+24,Shweta,33,F,Working Professional,5,9,Calls,Y,Get Ready for the day,30,3,3,Medium
+25,B Srinivasu,50,M,Working Professional,3,9,Social Media,Y,Yoga/Exercise,25,3,3,Medium
+26,Srilatha,29,F,Working Professional,3,8,Study/Work,Y,Get Ready for the day,30,30,2,Low
+27,Jagruthi,42,F,Working Professional,5,8,Social Media,Y,Yoga/Exercise,30,3,3,Medium
+28,Sneha Agarwal,28,F,Student,3,8,Calls,Y,Get Ready for the day,15,30,1,Low
+29,Vyshali,41,F,Working Professional,7,6,Study/Work,Y,Other,25,3,4,Medium
+30,Sree,35,M,Working Professional,8,8,Study/Work,N,Get Ready for the day,30,30,3,Medium
+31,Abhilasha ,34,F,Working Professional,3,6,Calls,Y,Check your phone,15,24,1,Low
+32,Sai kiran,43,M,Working Professional,5,8,Other,Y,Other,25,3,3,Medium
+33,Supriya Reddy ,34,F,Working Professional,2,8,Social Media,Y,Check your phone,15,1,2,Low
+34,M.KADAMBARI,32,F,Working Professional,2,8,Calls,N,Get Ready for the day,15,30,0,Low
+35,Soujanya,44,F,Working Professional,6,8,Calls,Y,Check your phone,25,3,4,Medium
+36,G Vishal Bharadwaj,24,M,Working Professional,7,4,Other,Y,Check your phone,50,3,5,High
+37,P V.Anupama,55,F,Other,3,8,Social Media,Y,Get Ready for the day,15,3,2,Low
+38,Anushka Sharma ,35,F,Student,4,8,OTT Platforms,Y,Get Ready for the day,25,30,2,Low
+39,Bhagyalaxmi.Ch,37,F,Working Professional,4,6,Study/Work,Y,Check your phone,15,3,2,Low
+40,Varsha ,40,F,Working Professional,5,8,Social Media,Y,Get Ready for the day,25,30,2,Low
+41,Nikhitha,33,F,Working Professional,5,8,Social Media,Y,Get Ready for the day,30,30,2,Low
+42,Surya,26,M,Working Professional,3,8,Social Media,Y,Check your phone,15,3,2,Low
+43,Ishika Sharma ,29,F,Other,3,8,OTT Platforms,Y,Check your phone,50,30,3,Medium
+44,Ram,34,M,Working Professional,6,8,Study/Work,N,Get Ready for the day,50,1,6,High
+45,Tanmaay Sharma ,19,M,Student,3,8,Study/Work,Y,Check your phone,15,24,1,Low
+46,Satyanarayan Sharma ,59,M,Working Professional,3,6,OTT Platforms,N,Get Ready for the day,15,30,1,Low
+47,Gopal,43,M,Other,2,8,Social Media,Y,Get Ready for the day,15,24,0,Low
+48,Sp subhashini,39,F,Other,5,8,Other,N,Check your phone,15,3,2,Low
