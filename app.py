@@ -8,9 +8,16 @@ from dotenv import load_dotenv
 # Load environment variables (from .env file)
 load_dotenv()
 
-# Load model and label encoder
-model = joblib.load("model/model.pkl")
-le = joblib.load("model/label_encoder.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load model and label encoder using absolute paths (avoids cwd issues on deploy)
+model_path = os.path.join(BASE_DIR, "model", "model.pkl")
+le_path = os.path.join(BASE_DIR, "model", "label_encoder.pkl")
+try:
+    model = joblib.load(model_path)
+    le = joblib.load(le_path)
+except Exception as e:
+    raise RuntimeError(f"Failed to load model files: {e}")
 
 app = Flask(__name__)
 
@@ -91,4 +98,6 @@ def about():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Use PORT from environment (Render sets $PORT) and bind to 0.0.0.0
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
