@@ -93,7 +93,8 @@ def predict():
         except Exception as e:
             suggestion = f"⚠️ AI Exception: {str(e)}"
     else:
-        suggestion = "⚠️ DEBUG: No API Key found in Environment Variables!"
+        all_env_keys = ", ".join(os.environ.keys())
+        suggestion = f"⚠️ DEBUG: No API Key found! I see these keys: {all_env_keys}"
 
     return render_template("predictor.html", prediction=result, suggestion=suggestion)
 
