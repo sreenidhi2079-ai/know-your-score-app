@@ -63,6 +63,7 @@ def predict():
     api_key = os.getenv("GEMINI_API_KEY")
 
     if api_key and api_key != "YOUR_GEMINI_API_KEY_HERE":
+        print(f"DEBUG: Attempting AI call. Key found (starts with: {api_key[:5]}...)")
         prompt = (f"The user has a {result} risk of smartphone addiction. "
                   f"They just logged {screen_time} hours of screen time today, {phone_checks} phone checks, "
                   f"and were without their phone for {hours_without} hours. "
@@ -78,14 +79,22 @@ def predict():
             
             if response.status_code == 200:
                 response_json = response.json()
-                ai_text = response_json["candidates"][0]["content"]["parts"][0]["text"].strip()
-                if ai_text:
-                    suggestion = ai_text.replace("*", "") # Overwrite with AI success
-            # If status != 200, we just keep the rule-based suggestion defined above
+                # Check if candidates exist
+                if "candidates" in response_json and response_json["candidates"]:
+                    ai_text = response_json["candidates"][0]["content"]["parts"][0]["text"].strip()
+                    if ai_text:
+                        suggestion = ai_text.replace("*", "") # Overwrite with AI success
+                        print("DEBUG: AI Insight successfully generated.")
+                else:
+                    print(f"DEBUG: No AI candidates returned. Response: {response.text}")
+            else:
+                print(f"DEBUG: AI API Error ({response.status_code}): {response.text}")
                 
-        except Exception:
-            # On network error or timeout, we keep the rule-based suggestion
+        except Exception as e:
+            print(f"DEBUG: Exception during AI call: {e}")
             pass
+    else:
+        print("DEBUG: AI Insight skipped (No API Key or placeholder used).")
 
     return render_template("predictor.html", prediction=result, suggestion=suggestion)
 
