@@ -60,8 +60,9 @@ def predict():
         suggestion = "🚨 High usage detected! Take a digital detox and limit phone dependency."
 
     # 2. Try AI Dynamic Suggestions (Highest Priority)
-    api_key = os.getenv("GEMINI_API_KEY")
-
+    # Check both common naming versions just in case
+    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("Gemini_API_Key")
+    
     if api_key and api_key != "YOUR_GEMINI_API_KEY_HERE":
         print(f"DEBUG: Attempting AI call. Key found (starts with: {api_key[:5]}...)")
         prompt = (f"The user has a {result} risk of smartphone addiction. "
