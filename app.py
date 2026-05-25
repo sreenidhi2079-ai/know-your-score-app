@@ -48,21 +48,21 @@ def predict():
     result = le.inverse_transform(prediction)[0]
 
     # =========================
-    # 🎯 AI DYNAMIC SUGGESTIONS LOGIC (GEMINI)
+    # 🎯 INSIGHTS LOGIC (AI First, Fallback to Rules)
     # =========================
-    suggestion = ""
+    
+    # 1. Define Rule-based Suggestion (Baseline / Fallback)
+    if result == "Low":
+        suggestion = "👍 Good habits! Keep maintaining balanced phone usage."
+    elif result == "Medium":
+        suggestion = "⚠ Try reducing screen time and avoid frequent phone checks."
+    else:
+        suggestion = "🚨 High usage detected! Take a digital detox and limit phone dependency."
+
+    # 2. Try AI Dynamic Suggestions (Highest Priority)
     api_key = os.getenv("GEMINI_API_KEY")
 
-    if not api_key or api_key == "YOUR_GEMINI_API_KEY_HERE":
-        # Fallback to rule-based if no API key is provided
-        if result == "Low":
-            suggestion = "👍 Good habits! Keep maintaining balanced phone usage."
-        elif result == "Medium":
-            suggestion = "⚠ Try reducing screen time and avoid frequent phone checks."
-        else:
-            suggestion = "🚨 High usage detected! Take a digital detox and limit phone dependency."
-    else:
-        # Call Gemini REST API
+    if api_key and api_key != "YOUR_GEMINI_API_KEY_HERE":
         prompt = (f"The user has a {result} risk of smartphone addiction. "
                   f"They just logged {screen_time} hours of screen time today, {phone_checks} phone checks, "
                   f"and were without their phone for {hours_without} hours. "
@@ -78,13 +78,14 @@ def predict():
             
             if response.status_code == 200:
                 response_json = response.json()
-                suggestion = response_json["candidates"][0]["content"]["parts"][0]["text"].strip()
-                suggestion = suggestion.replace("*", "") # Clean up common markdown asterisks
-            else:
-                suggestion = f"⚠️ AI Error ({response.status_code}): {response.text}"
+                ai_text = response_json["candidates"][0]["content"]["parts"][0]["text"].strip()
+                if ai_text:
+                    suggestion = ai_text.replace("*", "") # Overwrite with AI success
+            # If status != 200, we just keep the rule-based suggestion defined above
                 
-        except Exception as e:
-            suggestion = f"Oops! The AI could not generate an insight right now."
+        except Exception:
+            # On network error or timeout, we keep the rule-based suggestion
+            pass
 
     return render_template("predictor.html", prediction=result, suggestion=suggestion)
 
