@@ -79,22 +79,19 @@ def predict():
             
             if response.status_code == 200:
                 response_json = response.json()
-                # Check if candidates exist
                 if "candidates" in response_json and response_json["candidates"]:
                     ai_text = response_json["candidates"][0]["content"]["parts"][0]["text"].strip()
                     if ai_text:
-                        suggestion = ai_text.replace("*", "") # Overwrite with AI success
-                        print("DEBUG: AI Insight successfully generated.")
+                        suggestion = ai_text.replace("*", "")
                 else:
-                    print(f"DEBUG: No AI candidates returned. Response: {response.text}")
+                    suggestion = f"⚠️ AI Error: No candidates. Response: {response.text}"
             else:
-                print(f"DEBUG: AI API Error ({response.status_code}): {response.text}")
+                suggestion = f"⚠️ AI API Error ({response.status_code}): {response.text}"
                 
         except Exception as e:
-            print(f"DEBUG: Exception during AI call: {e}")
-            pass
+            suggestion = f"⚠️ AI Exception: {str(e)}"
     else:
-        print("DEBUG: AI Insight skipped (No API Key or placeholder used).")
+        suggestion = "⚠️ DEBUG: No API Key found in Environment Variables!"
 
     return render_template("predictor.html", prediction=result, suggestion=suggestion)
 
