@@ -1,4 +1,3 @@
-# Insight logic update
 from flask import Flask, render_template, request
 import joblib
 import numpy as np
@@ -61,11 +60,9 @@ def predict():
         suggestion = "🚨 High usage detected! Take a digital detox and limit phone dependency."
 
     # 2. Try AI Dynamic Suggestions (Highest Priority)
-    # Check both common naming versions just in case
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("Gemini_API_Key")
-    
+
     if api_key and api_key != "YOUR_GEMINI_API_KEY_HERE":
-        print(f"DEBUG: Attempting AI call. Key found (starts with: {api_key[:5]}...)")
         prompt = (f"The user has a {result} risk of smartphone addiction. "
                   f"They just logged {screen_time} hours of screen time today, {phone_checks} phone checks, "
                   f"and were without their phone for {hours_without} hours. "
@@ -76,7 +73,6 @@ def predict():
             headers = {"Content-Type": "application/json"}
             data = {"contents": [{"parts": [{"text": prompt}]}]}
             
-            # Request LLM generation
             response = requests.post(url, headers=headers, json=data, timeout=10)
             
             if response.status_code == 200:
@@ -84,17 +80,10 @@ def predict():
                 if "candidates" in response_json and response_json["candidates"]:
                     ai_text = response_json["candidates"][0]["content"]["parts"][0]["text"].strip()
                     if ai_text:
-                        suggestion = ai_text.replace("*", "")
-                else:
-                    suggestion = f"⚠️ AI Error: No candidates. Response: {response.text}"
-            else:
-                suggestion = f"⚠️ AI API Error ({response.status_code}): {response.text}"
-                
-        except Exception as e:
-            suggestion = f"⚠️ AI Exception: {str(e)}"
-    else:
-        all_env_keys = ", ".join(os.environ.keys())
-        suggestion = f"⚠️ DEBUG: No API Key found! I see these keys: {all_env_keys}"
+                        suggestion = ai_text.replace("*", "") 
+        except Exception:
+            # Silent fallback to rule-based
+            pass
 
     return render_template("predictor.html", prediction=result, suggestion=suggestion)
 
